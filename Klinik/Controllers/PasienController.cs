@@ -16,7 +16,6 @@ namespace Klinik.Controllers
             _db = new sqlHelper(config.GetConnectionString("WebApiDatabase"));
         }
 
-        // GET semua pasien
         [HttpGet]
         public IActionResult GetPasien()
         {
@@ -32,7 +31,6 @@ namespace Klinik.Controllers
             return Ok(list);
         }
 
-        // GET pasien by Id
         [HttpGet("{id}")]
         public IActionResult GetPasienById(int id)
         {
@@ -54,7 +52,6 @@ namespace Klinik.Controllers
             return Ok(pasien);
         }
 
-        // POST pasien baru
         [HttpPost]
         public IActionResult CreatePasien([FromBody] Pasien pasien)
         {
@@ -67,7 +64,6 @@ namespace Klinik.Controllers
             return Ok(new { message = "Pasien berhasil ditambahkan" });
         }
 
-        // PUT update pasien
         [HttpPut("{id}")]
         public IActionResult UpdatePasien(int id, [FromBody] Pasien pasien)
         {
@@ -81,7 +77,6 @@ namespace Klinik.Controllers
             return rows > 0 ? Ok(new { message = "Pasien berhasil diupdate" }) : NotFound(new { message = "Pasien tidak ditemukan" });
         }
 
-        // DELETE pasien
         [HttpDelete("{id}")]
         public IActionResult DeletePasien(int id)
         {

@@ -16,7 +16,6 @@ namespace Klinik.Controllers
             _db = new sqlHelper(config.GetConnectionString("WebApiDatabase"));
         }
 
-        // GET semua jadwal
         [HttpGet]
         public IActionResult GetJadwal()
         {
@@ -39,7 +38,6 @@ namespace Klinik.Controllers
             return Ok(list);
         }
 
-        // GET jadwal by Id
         [HttpGet("{id}")]
         public IActionResult GetJadwalById(int id)
         {
@@ -69,7 +67,6 @@ namespace Klinik.Controllers
             return Ok(jadwal);
         }
 
-        // POST jadwal baru
         [HttpPost]
         public IActionResult CreateJadwal([FromBody] JadwalPeriksa jadwal)
         {
@@ -83,7 +80,6 @@ namespace Klinik.Controllers
             return Ok(new { message = "Jadwal periksa berhasil ditambahkan" });
         }
 
-        // PUT update jadwal
         [HttpPut("{id}")]
         public IActionResult UpdateJadwal(int id, [FromBody] JadwalPeriksa jadwal)
         {
@@ -98,7 +94,6 @@ namespace Klinik.Controllers
             return rows > 0 ? Ok(new { message = "Jadwal periksa berhasil diupdate" }) : NotFound(new { message = "Jadwal periksa tidak ditemukan" });
         }
 
-        // DELETE jadwal
         [HttpDelete("{id}")]
         public IActionResult DeleteJadwal(int id)
         {

@@ -12,7 +12,6 @@ namespace Klinik.Helpers
             _connectionString = connectionString;
         }
 
-        // Eksekusi INSERT/UPDATE/DELETE
         public int ExecuteNonQuery(string query, Dictionary<string, object> parameters)
         {
             using (var conn = new NpgsqlConnection(_connectionString))
@@ -29,7 +28,6 @@ namespace Klinik.Helpers
             }
         }
 
-        // Eksekusi SELECT
         public DataTable ExecuteQuery(string query, Dictionary<string, object>? parameters = null)
         {
             using (var conn = new NpgsqlConnection(_connectionString))

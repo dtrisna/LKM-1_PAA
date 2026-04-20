@@ -16,7 +16,6 @@ namespace Klinik.Controllers
             _db = new sqlHelper(config.GetConnectionString("WebApiDatabase"));
         }
 
-        // GET semua dokter
         [HttpGet]
         public IActionResult GetDokter()
         {
@@ -32,7 +31,6 @@ namespace Klinik.Controllers
             return Ok(list);
         }
 
-        // GET dokter by Id
         [HttpGet("{id}")]
         public IActionResult GetDokterById(int id)
         {
@@ -50,11 +48,9 @@ namespace Klinik.Controllers
                 CreatedAt = dt.Rows[0].Field<DateTime>("CreatedAt"),
                 UpdatedAt = dt.Rows[0].Field<DateTime>("UpdatedAt")
             };
-
             return Ok(dokter);
         }
 
-        // POST dokter baru
         [HttpPost]
         public IActionResult CreateDokter([FromBody] Dokter dokter)
         {
@@ -67,7 +63,6 @@ namespace Klinik.Controllers
             return Ok(new { message = "Dokter berhasil ditambahkan" });
         }
 
-        // PUT update dokter
         [HttpPut("{id}")]
         public IActionResult UpdateDokter(int id, [FromBody] Dokter dokter)
         {
@@ -81,7 +76,6 @@ namespace Klinik.Controllers
             return rows > 0 ? Ok(new { message = "Dokter berhasil diupdate" }) : NotFound(new { message = "Dokter tidak ditemukan" });
         }
 
-        // DELETE dokter
         [HttpDelete("{id}")]
         public IActionResult DeleteDokter(int id)
         {
